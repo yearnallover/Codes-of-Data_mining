@@ -1,0 +1,13 @@
+import pyarrow.parquet as pq
+import os
+## %
+folder = "/media/sdb/zhurongjiang/Data_mining/now/Data mining/10G_data/"
+
+for f in os.listdir(folder):
+    if f.endswith(".parquet"):
+        path = os.path.join(folder, f)
+        try:
+            pq.read_table(path)
+            print(f"✅ 正常: {f}")
+        except Exception as e:
+            print(f"❌ 读取失败: {f}，原因: {e}")
